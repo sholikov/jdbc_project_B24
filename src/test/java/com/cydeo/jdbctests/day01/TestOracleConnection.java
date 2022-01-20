@@ -24,7 +24,7 @@ public class TestOracleConnection {
         Statement statement = conn.createStatement();
 
         // using with statement we will execute query
-        ResultSet rs=statement.executeQuery("select * from regions");
+        ResultSet rs = statement.executeQuery("select * from regions");
 
         // move to cursor first row
         rs.next();
@@ -33,12 +33,41 @@ public class TestOracleConnection {
         System.out.println(rs.getString(2));
         System.out.println(rs.getString("region_name"));
 
+         /*
+        // move to cursor first row
+       rs.next();
+
+       // now we are at first row w will get data
+        System.out.println(rs.getString(2));
+        System.out.println(rs.getString("region_name"));
+
+        //  1- Europe
+        //  2- Americas
+
+        // second row
+        rs.next();
+
+        System.out.println(rs.getInt(1)+"-"+rs.getString(2));
+
+        //third row
+        rs.next();
+        System.out.println(rs.getInt("region_id")+"-"+rs.getString("region_name"));
+
+         */
+
+        while(rs.next()){
+            System.out.println(rs.getInt(1)+"-"+rs.getString(2));
+        }
+
+
+
+
+
 
         // close connection
         rs.close();
         statement.close();
         conn.close();
-
 
 
     }

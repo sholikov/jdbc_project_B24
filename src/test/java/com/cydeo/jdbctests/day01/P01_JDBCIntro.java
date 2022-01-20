@@ -20,8 +20,26 @@ public class P01_JDBCIntro {
         Statement statement = conn.createStatement();
 
         // using with statement we will execute query
-        ResultSet rs = statement.executeQuery("select * from regions");
+        ResultSet rs = statement.executeQuery("select * from departments where manager_id is not null ");
+
+        /*
+
+        10 - Administration - 200 -1700
+
+         */
+
+        while (rs.next()) {
+
+            System.out.println(rs.getInt(1) + "-" + rs.getString("department_name") + "-" + rs.getInt(3) + "-" + rs.getInt(4));
+        }
+
+
+        //close all conn
+        rs.close();
+        statement.close();
+        conn.close();
     }
 }
+
 
 
